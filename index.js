@@ -1,16 +1,8 @@
-// Import express
 let express = require('express');
-
-// Import Body parser
 let bodyParser = require('body-parser');
-
-// Import Mongoose
 let mongoose = require('mongoose');
 
-// Initialise the app
 let app = express();
-
-// Import routes
 let apiRoutes = require("./api-routes");
 
 // Configure bodyparser to handle post requests
@@ -19,6 +11,7 @@ app.use(bodyParser.urlencoded({
 }));
 
 app.use(bodyParser.json());
+
 // Connect to Mongoose and set connection variable
 mongoose.connect('mongodb://localhost/resthub', { useNewUrlParser: true});
 var db = mongoose.connection;

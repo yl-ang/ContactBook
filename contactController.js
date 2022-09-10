@@ -28,7 +28,7 @@ exports.new = function (req, res) {
     contact.email = req.body.email;
     contact.phone = req.body.phone;
 
-    contact.sav(function (err) {
+    contact.save(function (err) {
         if (err) res.json(err);
 
         res.json({
@@ -40,7 +40,7 @@ exports.new = function (req, res) {
 
 // Handles view contact info
 exports.view = function (req, res) {
-    Contact.findById(req.param.contact_id, function (err, contact) {
+    Contact.findById(req.params.contact_id, function (err, contact) {
         if (err) res.send(err);
         res.json({
             message: 'contact details loading ...',
