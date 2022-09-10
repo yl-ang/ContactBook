@@ -1,0 +1,24 @@
+{
+  "name": "otot-b",
+  "version": "1.0.0",
+  "description": "CS3219 Task B",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yl-ang/OTOT-B.git"
+  },
+  "author": "Ang Yong Liang",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/yl-ang/OTOT-B/issues"
+  },
+  "homepage": "https://github.com/yl-ang/OTOT-B#readme",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "express": "^4.18.1",
+    "mongoose": "^6.6.0"
+  }
+}
