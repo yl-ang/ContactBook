@@ -7,10 +7,7 @@ Contact = require('./contactModel');
 exports.index = function (req, res) {
     Contact.get(function (err, contacts)  {
         if (err) {
-            res.json({
-                status: "error",
-                message: err,
-            });
+            return res.status(500).json({message: 'Failed to retrieve contacts'})
         }
         res.json({
             status: "success",
@@ -29,7 +26,9 @@ exports.new = function (req, res) {
     contact.phone = req.body.phone;
 
     contact.save(function (err) {
-        if (err) res.json(err);
+        if (err) {
+            return res.status(500).json({message: 'Failed to save new contact'})
+        }
 
         res.json({
             message: "New contact created!",
@@ -41,7 +40,9 @@ exports.new = function (req, res) {
 // Handles view contact info
 exports.view = function (req, res) {
     Contact.findById(req.params.contact_id, function (err, contact) {
-        if (err) res.send(err);
+        if (err) {
+            return res.status(500).json({message: 'Failed to view contact'})
+        }
         res.json({
             message: 'contact details loading ...',
             data: contact
@@ -53,7 +54,9 @@ exports.view = function (req, res) {
 exports.update = function (req, res) {
 
     Contact.findById(req.params.contact_id, function (err, contact) {
-        if (err) res.send(err);
+        if (err) {
+            return res.status(500).json({message: 'Failed to update contact'})
+        }
         
         contact.name = req.body.name ? req.body.name : contact.name;
         contact.gender = req.body.gender ? req.body.gender : contact.gender;
@@ -74,7 +77,9 @@ exports.update = function (req, res) {
 // Handle delete contact
 exports.delete = function (req, res) {
     Contact.remove({ _id: req.params.contact_id}, function (err, contact) {
-        if (err) res.send(err);
+        if (err) {
+            return res.status(500).json({message: 'Failed to delete contacts'})
+        }
         res.json({
             status: "success",
             message: 'Contact deleted'
