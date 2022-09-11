@@ -13,9 +13,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 // Connect to Mongoose and set connection variable
-var MONGODB_URI = process.env.MONGODB_URI;
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/resthub";
 
-console.log(MONGODB_URI);
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true});
 var db = mongoose.connection;
 
