@@ -64,7 +64,9 @@ exports.update = function (req, res) {
         contact.phone = req.body.phone ? req.body.phone :  contact.phone;
 
         contact.save( function (err) {
-            if (err) res.json(err);
+            if (err) {
+                return res.status(500).json({message: 'Failed to save updated contact to database'})
+            }
 
             res.json({
                 message: "Contact Info updated",
