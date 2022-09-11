@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 let express = require('express');
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
@@ -12,28 +14,18 @@ app.use(bodyParser.urlencoded({
 
 app.use(bodyParser.json());
 
-// Connect to Mongoose and set connection variable
-var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/resthub";
+var MONGODB_URI = process.env.MONGODB_URI || process.env.DB_LOCAL_URI;
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true});
-var db = mongoose.connection;
 
-// Added check for DB connection
-if(!db)
-    console.log("Error connecting db")
-else
-    console.log("Db connected successfully")
+let db = mongoose.connection;
 
-// Setup server port
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
+
 var port = process.env.PORT || 8080;
 
-// Send message for default URL
 app.get('/', (req, res) => res.send('Website is up and running, visit /api/contacts to use contacts services'));
 
-// Use Api routes in the App
 app.use('/api', apiRoutes);
-// Launch app to listen to specified port
 
-app.listen(port, function () {
-    console.log("Running RestHub on port " + port);
-});
+app.listen(port, () => console.log("Contact-service listening on port " + port));
