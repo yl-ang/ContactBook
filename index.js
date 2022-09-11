@@ -26,7 +26,7 @@ else
 var port = process.env.PORT || 8080;
 
 // Send message for default URL
-app.get('/', (req, res) => res.send('Hello World with Express'));
+app.get('/', (req, res) => res.send('Website is up and running, visit /api/contacts to use contacts services'));
 
 // Use Api routes in the App
 app.use('/api', apiRoutes);
