@@ -20,8 +20,8 @@ describe("Contacts", () => {
   });
 
   // Test the /contacts POST route
-  describe("/POST contact details", () => {
-    it("it should create a new contact", (done) => {
+  describe("POST /api/contacts", () => {
+    it("it should POST a new contact", (done) => {
       let contactDetails = {
         name: "Tester 1",
         gender: "Male",
@@ -48,7 +48,7 @@ describe("Contacts", () => {
   });
 
   // Test the /api/contacts/:contact_id GET route
-  describe("/api/contacts/:contact_id", () => {
+  describe("GET /api/contacts/:contact_id", () => {
     it("it should GET a contact by the given id", (done) => {
       const contact = new Contact({
         name: "Tester2",
@@ -79,7 +79,7 @@ describe("Contacts", () => {
   });
 
   // Test the /api/contacts/:contact_id PUT route
-  describe("/api/contacts/:id", () => {
+  describe("PUT /api/contacts/:id", () => {
     it("it should UPDATE a contact given the id", (done) => {
       const contact = new Contact({
         name: "Tester5",
@@ -94,9 +94,7 @@ describe("Contacts", () => {
           .end((err, res) => {
             res.should.have.status(200);
             res.body.should.be.a("object");
-            res.body.should.have
-              .property("message")
-              .eql("Contact deleted");
+            res.body.should.have.property("message").eql("Contact deleted");
             done();
           });
       });
@@ -104,7 +102,7 @@ describe("Contacts", () => {
   });
 
   // Test the /api/contacts/:contact_id DELETE route
-  describe("/api/contacts/:id", () => {
+  describe("DELETE /api/contacts/:id", () => {
     it("it should DELETE a contact given the id", (done) => {
       const contact = new Contact({
         name: "Tester3",
@@ -134,5 +132,4 @@ describe("Contacts", () => {
       });
     });
   });
-
 });
