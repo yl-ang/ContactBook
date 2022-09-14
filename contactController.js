@@ -1,7 +1,7 @@
 const { json } = require("body-parser");
 
 // Import contact model
-Contact = require("./contactModel");
+Contact = require("./contactModel.js");
 
 // Handle index actions (retrieve)
 exports.index = function (req, res) {
