@@ -3,6 +3,8 @@ name: Node.js CI
 on: [push]
 
 jobs:
+  env:
+    DB_LOCAL_URI: mongodb://localhost/resthub
   build:
     runs-on: windows-latest
 
