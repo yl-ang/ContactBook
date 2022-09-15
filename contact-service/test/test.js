@@ -78,9 +78,9 @@ describe("Contacts", () => {
     });
   });
 
-  // Test the /api/contacts/:contact_id PUT route
-  describe("PUT /api/contacts/:id", () => {
-    it("it should UPDATE a contact given the id", (done) => {
+  // Test the /api/contacts/:contact_id DEL route
+  describe("DEL /api/contacts/:id", () => {
+    it("it should DELETE a contact given the id", (done) => {
       const contact = new Contact({
         name: "Tester5",
         email: "Tester5@Tester5",
@@ -101,9 +101,9 @@ describe("Contacts", () => {
     });
   });
 
-  // Test the /api/contacts/:contact_id DELETE route
-  describe("DELETE /api/contacts/:id", () => {
-    it("it should DELETE a contact given the id", (done) => {
+  // Test the /api/contacts/:contact_id UPDATE route
+  describe("PUT /api/contacts/:id", () => {
+    it("it should UPDATE a contact given the id", (done) => {
       const contact = new Contact({
         name: "Tester3",
         email: "Tester3@Tester3",
