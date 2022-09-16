@@ -1,1 +1,1 @@
-web: node ./../contact-service/index.js
+web: node ./contact-service/index.js
