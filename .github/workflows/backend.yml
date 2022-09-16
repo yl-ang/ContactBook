@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Contact Service CD
 
 on: [push]
 
