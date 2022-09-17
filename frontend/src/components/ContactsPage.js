@@ -39,7 +39,6 @@ function ContactsPage() {
 
   const handleCreateContact = async () => {
     setOpenCreateContactForm(false);
-    console.log("Creating account");
     const res = await axios
       .post(URL_CREATE_USER, {
         name,
@@ -52,7 +51,9 @@ function ContactsPage() {
         alert("Please try again later");
       });
 
-    console.log(res);
+    if (res && res.status === 200) {
+      // alert(res.data.data._id);
+    }
   };
 
   return (
