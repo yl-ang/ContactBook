@@ -1,11 +1,18 @@
 require("dotenv").config();
 
+let cors = require("cors");
 let express = require("express");
+
 let bodyParser = require("body-parser");
 let mongoose = require("mongoose");
 
 let app = express();
 let apiRoutes = require("./api-routes");
+
+const corsObject = {
+  origin: true,
+  credentials: true,
+};
 
 app.use(
   bodyParser.urlencoded({
@@ -15,7 +22,10 @@ app.use(
 
 app.use(bodyParser.json());
 
-var MONGODB_URI = process.env.MONGODB_URI || process.env.DB_LOCAL_URI;
+app.use(cors(corsObject)); // config cors so that front-end can use
+app.options("*", cors(corsObject));
+
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/resthub";
 
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
