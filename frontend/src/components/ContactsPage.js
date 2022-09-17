@@ -1,5 +1,7 @@
 import * as React from "react";
-
+import { URL_CREATE_USER } from "../configs";
+import { useState } from "react";
+import axios from "axios";
 import {
   Button,
   Dialog,
@@ -23,8 +25,11 @@ function createData(name, email, gender, phone) {
 }
 
 function ContactsPage() {
-  const [openCreateContactForm, setOpenCreateContactForm] =
-    React.useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [gender, setGender] = useState("");
+  const [telephone, setTelephone] = useState("");
+  const [openCreateContactForm, setOpenCreateContactForm] = useState(false);
 
   const rows = [createData("0", "0", "0", "0")];
 
@@ -32,8 +37,22 @@ function ContactsPage() {
     setOpenCreateContactForm(true);
   };
 
-  const handleClickAddContact = () => {
+  const handleCreateContact = async () => {
     setOpenCreateContactForm(false);
+    console.log("Creating account");
+    const res = await axios
+      .post(URL_CREATE_USER, {
+        name,
+        email,
+        gender,
+        telephone,
+      })
+      .catch((err) => {
+        alert(err);
+        alert("Please try again later");
+      });
+
+    console.log(res);
   };
 
   return (
@@ -73,7 +92,7 @@ function ContactsPage() {
             variant="contained"
             onClick={handleClickOpenCreateContactForm}
           >
-            Add Contact
+            Create Contact
           </Button>
           <Dialog
             open={openCreateContactForm}
@@ -92,15 +111,19 @@ function ContactsPage() {
                 type="name"
                 fullWidth
                 variant="standard"
+                value={name}
+                onChange={(e) => setName(e.target.value)}
               />
               <TextField
                 autoFocus
                 margin="dense"
-                id="name"
+                id="email"
                 label="Email Address"
                 type="email"
                 fullWidth
                 variant="standard"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
               />
               <TextField
                 autoFocus
@@ -110,6 +133,8 @@ function ContactsPage() {
                 type="gender"
                 fullWidth
                 variant="standard"
+                value={gender}
+                onChange={(e) => setGender(e.target.value)}
               />
               <TextField
                 autoFocus
@@ -119,15 +144,20 @@ function ContactsPage() {
                 type="int"
                 fullWidth
                 variant="standard"
+                value={telephone}
+                onChange={(e) => setTelephone(e.target.value)}
               />
             </DialogContent>
             <DialogActions>
               <Button onClick={() => setOpenCreateContactForm(false)}>
                 Cancel
               </Button>
-              <Button onClick={handleClickAddContact}>Add</Button>
+              <Button onClick={handleCreateContact}>Add</Button>
             </DialogActions>
           </Dialog>
+        </Grid>
+        <Grid>
+          <Button variant="contained">View Contact</Button>
         </Grid>
         <Grid>
           <Button variant="contained">Update Contact</Button>
