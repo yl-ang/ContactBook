@@ -17,7 +17,7 @@ const CreateContactForm = () => {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [gender, setGender] = useState("");
-  const [telephone, setTelephone] = useState("");
+  const [phone, setPhone] = useState("");
   const [openCreateContactForm, setOpenCreateContactForm] = useState(false);
 
   const handleClickOpenCreateContactForm = () => {
@@ -31,7 +31,7 @@ const CreateContactForm = () => {
         name,
         email,
         gender,
-        telephone,
+        phone,
       })
       .catch((err) => {
         alert("Please try again later");
@@ -54,19 +54,8 @@ const CreateContactForm = () => {
         <DialogTitle>Create new contact via /POST</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Create new contact with email, name, gender, telephone
+            Create new contact with email, name, gender, phone
           </DialogContentText>
-          <TextField
-            autoFocus
-            margin="dense"
-            id="email"
-            label="Email"
-            type="email"
-            fullWidth
-            variant="standard"
-            value={email}
-            onChange={(e) => setName(e.target.value)}
-          />
           <TextField
             autoFocus
             margin="dense"
@@ -103,13 +92,13 @@ const CreateContactForm = () => {
           <TextField
             autoFocus
             margin="dense"
-            id="telephone"
-            label="Telephone"
+            id="phone"
+            label="Phone"
             type="int"
             fullWidth
             variant="standard"
-            value={telephone}
-            onChange={(e) => setTelephone(e.target.value)}
+            value={phone}
+            onChange={(e) => setPhone(e.target.value)}
           />
         </DialogContent>
         <DialogActions>
