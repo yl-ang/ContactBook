@@ -38,12 +38,12 @@ const CreateContactForm = () => {
       });
 
     if (res && res.status === 200) {
-      // alert(res.data.data._id);
+      alert("Successfully created contact:\n" + res.data.data.name);
     }
   };
 
   return (
-    <Grid>
+    <Grid m={1}>
       <Button variant="contained" onClick={handleClickOpenCreateContactForm}>
         Create Contact
       </Button>
@@ -51,10 +51,11 @@ const CreateContactForm = () => {
         open={openCreateContactForm}
         onClose={() => setOpenCreateContactForm(false)}
       >
-        <DialogTitle>Create new contact via /POST</DialogTitle>
+        <DialogTitle>Create new contact</DialogTitle>
         <DialogContent>
           <DialogContentText>
-            Create new contact with email, name, gender, phone
+            Please input the email, name, gender, phone of the contact to be
+            added
           </DialogContentText>
           <TextField
             autoFocus

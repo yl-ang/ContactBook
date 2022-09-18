@@ -32,12 +32,12 @@ const DeleteContactForm = () => {
       });
 
     if (res && res.status === 200) {
-      console.log(res);
+      alert("Successfully deleted contact");
     }
   };
 
   return (
-    <Grid>
+    <Grid m={1}>
       <Button variant="contained" onClick={handleClickOpenDeleteContactForm}>
         Delete Contact
       </Button>
@@ -45,14 +45,16 @@ const DeleteContactForm = () => {
         open={openDeleteContactForm}
         onClose={() => setOpenDeleteContactForm(false)}
       >
-        <DialogTitle>Delete contact via /DEL using id</DialogTitle>
+        <DialogTitle>Delete contact</DialogTitle>
         <DialogContent>
-          <DialogContentText>Delete contact via id</DialogContentText>
+          <DialogContentText>
+            Please input the contact ID of the contact to be deleted
+          </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="id"
-            label="Id"
+            label="Contact ID"
             type="id"
             fullWidth
             variant="standard"
