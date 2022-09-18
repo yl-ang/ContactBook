@@ -1,6 +1,7 @@
 import * as React from "react";
-import { URL_CREATE_USER, URL_VIEW_USER } from "../configs";
+import { URL_CREATE_USER } from "../configs";
 import { useState } from "react";
+import CreateContactForm from "./CreateContactForm";
 import ViewContactForm from "./ViewContactForm";
 import axios from "axios";
 import {
@@ -48,7 +49,6 @@ function ContactsPage() {
         telephone,
       })
       .catch((err) => {
-        alert(err);
         alert("Please try again later");
       });
 
@@ -89,86 +89,7 @@ function ContactsPage() {
         </TableContainer>
       </Grid>
       <Grid item xs={4}>
-        <Grid>
-          <Button
-            variant="contained"
-            onClick={handleClickOpenCreateContactForm}
-          >
-            Create Contact
-          </Button>
-          <Dialog
-            open={openCreateContactForm}
-            onClose={() => setOpenCreateContactForm(false)}
-          >
-            <DialogTitle>Create new contact via /POST</DialogTitle>
-            <DialogContent>
-              <DialogContentText>
-                Create new contact with email, name, gender, telephone
-              </DialogContentText>
-              <TextField
-                autoFocus
-                margin="dense"
-                id="email"
-                label="Email"
-                type="email"
-                fullWidth
-                variant="standard"
-                value={email}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <TextField
-                autoFocus
-                margin="dense"
-                id="name"
-                label="Name"
-                type="name"
-                fullWidth
-                variant="standard"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-              />
-              <TextField
-                autoFocus
-                margin="dense"
-                id="email"
-                label="Email Address"
-                type="email"
-                fullWidth
-                variant="standard"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
-              <TextField
-                autoFocus
-                margin="dense"
-                id="gender"
-                label="Gender"
-                type="gender"
-                fullWidth
-                variant="standard"
-                value={gender}
-                onChange={(e) => setGender(e.target.value)}
-              />
-              <TextField
-                autoFocus
-                margin="dense"
-                id="telephone"
-                label="Telephone"
-                type="int"
-                fullWidth
-                variant="standard"
-                value={telephone}
-                onChange={(e) => setTelephone(e.target.value)}
-              />
-            </DialogContent>
-            <DialogActions>
-              <Button onClick={() => setOpenCreateContactForm(false)}>
-                Cancel
-              </Button>
-              <Button onClick={handleCreateContact}>Add</Button>
-            </DialogActions>
-          </Dialog>
-        </Grid>
+        <CreateContactForm />
         <ViewContactForm />
         <Grid>
           <Button variant="contained">Update Contact</Button>
