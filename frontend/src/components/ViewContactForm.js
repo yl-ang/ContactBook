@@ -33,12 +33,25 @@ const ViewContactForm = () => {
       });
 
     if (res && res.status === 200) {
-      setObtainedContact(res.data);
+      var profile =
+        "Successfully retrieved contact\n" +
+        "Name: " +
+        res.data.data.name +
+        "\n" +
+        "Email: " +
+        res.data.data.email +
+        "\n" +
+        "Gender: " +
+        res.data.data.gender +
+        "\n" +
+        "Phone: " +
+        res.data.data.phone;
+      alert(profile);
     }
   };
 
   return (
-    <Grid>
+    <Grid m={1}>
       <Button variant="contained" onClick={handleClickOpenViewContactForm}>
         View Contact
       </Button>
@@ -46,14 +59,16 @@ const ViewContactForm = () => {
         open={openViewContactForm}
         onClose={() => setOpenViewContactForm(false)}
       >
-        <DialogTitle>View contact via /GET using id</DialogTitle>
+        <DialogTitle>Get information about a contact</DialogTitle>
         <DialogContent>
-          <DialogContentText>View contact via id</DialogContentText>
+          <DialogContentText>
+            Please input the contact ID of the contact to be retrieved
+          </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
             id="id"
-            label="Id"
+            label="Contact ID"
             type="id"
             fullWidth
             variant="standard"

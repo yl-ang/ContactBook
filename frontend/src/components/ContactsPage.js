@@ -1,6 +1,7 @@
 import * as React from "react";
 import CreateContactForm from "./CreateContactForm";
 import ViewContactForm from "./ViewContactForm";
+import UpdateContactForm from "./UpdateContactForm";
 import DeleteContactForm from "./DeleteContactForm";
 import { useState } from "react";
 import axios from "axios";
@@ -8,24 +9,23 @@ import { URL_GET_ALL_USERS } from "../configs";
 
 import { DataGrid } from "@mui/x-data-grid";
 
-import { Button, Paper, Grid } from "@mui/material";
+import { Paper, Grid } from "@mui/material";
 
 function ContactsPage() {
   const [contacts, setcontacts] = useState([]);
 
   const columns = [
-    { field: "sn", headerName: "S/N", width: 150 },
-    { field: "id", headerName: "ID", width: 150 },
-    { field: "name", headerName: "Name", width: 150 },
-    { field: "email", headerName: "Email", width: 150 },
-    { field: "gender", headerName: "Gender", width: 150 },
-    { field: "telephone", headerName: "Telephone", width: 150 },
+    { field: "sn", headerName: "S/N", width: 75 },
+    { field: "id", headerName: "Contact ID", width: 250 },
+    { field: "name", headerName: "Name", width: 250 },
+    { field: "email", headerName: "Email", width: 250 },
+    { field: "gender", headerName: "Gender", width: 75 },
+    { field: "telephone", headerName: "Telephone", width: 200 },
     { field: "__v0", hide: true },
   ];
 
   const handleGetAllContacts = async () => {
     const res = await axios.get(URL_GET_ALL_USERS).catch((err) => {
-      alert(err);
       alert("Please try again later");
     });
 
@@ -36,17 +36,23 @@ function ContactsPage() {
 
   React.useEffect(() => {
     handleGetAllContacts();
-    // console.log(contacts.data);
   });
 
   return (
-    <Grid container spacing={2} alignItems="center" justifyContent="center">
+    <Grid
+      container
+      spacing={5}
+      direction="row"
+      alignItems="center"
+      justify="center"
+      m={10}
+    >
       <Grid item xs={8}>
         <DataGrid
           component={Paper}
-          style={{ height: 350, width: "100%", flexGrow: 1, display: "flex" }}
+          style={{ height: 500, width: "100%", flexGrow: 1, display: "flex" }}
           rows={contacts.map((item, index) => ({
-            sn: index,
+            sn: index + 1,
             id: item._id,
             name: item.name,
             email: item.email,
@@ -54,16 +60,14 @@ function ContactsPage() {
             telephone: item.phone,
           }))}
           columns={columns}
-          pageSize={5}
-          rowsPerPageOptions={[5]}
+          pageSize={7}
+          rowsPerPageOptions={[7]}
         />
       </Grid>
       <Grid item xs={4}>
         <CreateContactForm />
         <ViewContactForm />
-        <Grid>
-          <Button variant="contained">Update Contact</Button>
-        </Grid>
+        <UpdateContactForm />
         <DeleteContactForm />
       </Grid>
     </Grid>

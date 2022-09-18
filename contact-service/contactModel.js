@@ -8,6 +8,7 @@ var contactSchema = mongoose.Schema({
   email: {
     type: String,
     required: true,
+    unique: true,
   },
   gender: String,
   phone: String,
