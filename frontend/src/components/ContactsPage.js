@@ -6,25 +6,22 @@ import { useState } from "react";
 import axios from "axios";
 import { URL_GET_ALL_USERS } from "../configs";
 
-import {
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-  Grid,
-} from "@mui/material";
+import { DataGrid } from "@mui/x-data-grid";
 
-function createData(name, email, gender, phone) {
-  return { name, email, gender, phone };
-}
+import { Button, Paper, Grid } from "@mui/material";
 
 function ContactsPage() {
   const [contacts, setcontacts] = useState([]);
-  const rows = [createData("0", "0", "0", "0")];
+
+  const columns = [
+    { field: "sn", headerName: "S/N", width: 150 },
+    { field: "i d", headerName: "ID", width: 150 },
+    { field: "name", headerName: "Name", width: 150 },
+    { field: "email", headerName: "Email", width: 150 },
+    { field: "gender", headerName: "Gender", width: 150 },
+    { field: "telephone", headerName: "Telephone", width: 150 },
+    { field: "__v0", hide: true },
+  ];
 
   const handleGetAllContacts = async () => {
     const res = await axios.get(URL_GET_ALL_USERS).catch((err) => {
@@ -33,45 +30,33 @@ function ContactsPage() {
     });
 
     if (res && res.status === 200) {
-      setcontacts(res.data);
+      setcontacts(res.data.data);
     }
   };
 
-  // React.useEffect(() => {
-  //   handleGetAllContacts();
-  //   // console.log(contacts);
-  // });
+  React.useEffect(() => {
+    handleGetAllContacts();
+    // console.log(contacts.data);
+  });
 
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={2} alignItems="center" justifyContent="center">
       <Grid item xs={8}>
-        <TableContainer component={Paper}>
-          <Table sx={{ minWidth: 650 }} aria-label="simple table">
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell align="right">Email</TableCell>
-                <TableCell align="right">Gender</TableCell>
-                <TableCell align="right">Phone</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rows.map((row) => (
-                <TableRow
-                  key={row.name}
-                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                >
-                  <TableCell component="th" scope="row">
-                    {row.name}
-                  </TableCell>
-                  <TableCell align="right">{row.email}</TableCell>
-                  <TableCell align="right">{row.gender}</TableCell>
-                  <TableCell align="right">{row.phone}</TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </TableContainer>
+        <DataGrid
+          component={Paper}
+          style={{ height: 350, width: "100%", flexGrow: 1, display: "flex" }}
+          rows={contacts.map((item, index) => ({
+            sn: index,
+            id: item._id,
+            name: item.name,
+            email: item.email,
+            gender: item.gender,
+            telephone: item.phone,
+          }))}
+          columns={columns}
+          pageSize={5}
+          rowsPerPageOptions={[5]}
+        />
       </Grid>
       <Grid item xs={4}>
         <CreateContactForm />
