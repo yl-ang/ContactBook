@@ -1,17 +1,10 @@
 import * as React from "react";
-import { URL_CREATE_USER } from "../configs";
-import { useState } from "react";
 import CreateContactForm from "./CreateContactForm";
 import ViewContactForm from "./ViewContactForm";
-import axios from "axios";
+import DeleteContactForm from "./DeleteContactForm";
+
 import {
   Button,
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  DialogContentText,
-  TextField,
-  DialogActions,
   Table,
   TableBody,
   TableCell,
@@ -27,35 +20,7 @@ function createData(name, email, gender, phone) {
 }
 
 function ContactsPage() {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [gender, setGender] = useState("");
-  const [telephone, setTelephone] = useState("");
-  const [openCreateContactForm, setOpenCreateContactForm] = useState(false);
-
   const rows = [createData("0", "0", "0", "0")];
-
-  const handleClickOpenCreateContactForm = () => {
-    setOpenCreateContactForm(true);
-  };
-
-  const handleCreateContact = async () => {
-    setOpenCreateContactForm(false);
-    const res = await axios
-      .post(URL_CREATE_USER, {
-        name,
-        email,
-        gender,
-        telephone,
-      })
-      .catch((err) => {
-        alert("Please try again later");
-      });
-
-    if (res && res.status === 200) {
-      // alert(res.data.data._id);
-    }
-  };
 
   return (
     <Grid container spacing={2}>
@@ -94,9 +59,7 @@ function ContactsPage() {
         <Grid>
           <Button variant="contained">Update Contact</Button>
         </Grid>
-        <Grid>
-          <Button variant="contained">Delete Contact</Button>
-        </Grid>
+        <DeleteContactForm />
       </Grid>
     </Grid>
   );
