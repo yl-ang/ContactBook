@@ -15,7 +15,7 @@ function ContactsPage() {
 
   const columns = [
     { field: "sn", headerName: "S/N", width: 150 },
-    { field: "i d", headerName: "ID", width: 150 },
+    { field: "id", headerName: "ID", width: 150 },
     { field: "name", headerName: "Name", width: 150 },
     { field: "email", headerName: "Email", width: 150 },
     { field: "gender", headerName: "Gender", width: 150 },
