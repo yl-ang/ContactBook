@@ -2,6 +2,9 @@ import * as React from "react";
 import CreateContactForm from "./CreateContactForm";
 import ViewContactForm from "./ViewContactForm";
 import DeleteContactForm from "./DeleteContactForm";
+import { useState } from "react";
+import axios from "axios";
+import { URL_GET_ALL_USERS } from "../configs";
 
 import {
   Button,
@@ -20,7 +23,24 @@ function createData(name, email, gender, phone) {
 }
 
 function ContactsPage() {
+  const [contacts, setcontacts] = useState([]);
   const rows = [createData("0", "0", "0", "0")];
+
+  const handleGetAllContacts = async () => {
+    const res = await axios.get(URL_GET_ALL_USERS).catch((err) => {
+      alert(err);
+      alert("Please try again later");
+    });
+
+    if (res && res.status === 200) {
+      setcontacts(res.data);
+    }
+  };
+
+  // React.useEffect(() => {
+  //   handleGetAllContacts();
+  //   // console.log(contacts);
+  // });
 
   return (
     <Grid container spacing={2}>

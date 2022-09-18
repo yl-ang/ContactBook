@@ -1,5 +1,5 @@
 import * as React from "react";
-import { URL_VIEW_USER } from "../configs";
+import { URL_DELETE_USER } from "../configs";
 import { useState } from "react";
 import axios from "axios";
 import {
@@ -23,7 +23,7 @@ const DeleteContactForm = () => {
   const handleDeleteContact = async () => {
     setOpenDeleteContactForm(false);
     const res = await axios
-      .delete(URL_VIEW_USER + id, {
+      .delete(URL_DELETE_USER + id, {
         id,
       })
       .catch((err) => {
