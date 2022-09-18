@@ -1,6 +1,7 @@
 import * as React from "react";
-import { URL_CREATE_USER } from "../configs";
+import { URL_CREATE_USER, URL_VIEW_USER } from "../configs";
 import { useState } from "react";
+import ViewContactForm from "./ViewContactForm";
 import axios from "axios";
 import {
   Button,
@@ -102,8 +103,19 @@ function ContactsPage() {
             <DialogTitle>Create new contact via /POST</DialogTitle>
             <DialogContent>
               <DialogContentText>
-                Create new contact with name, email, gender, telephone
+                Create new contact with email, name, gender, telephone
               </DialogContentText>
+              <TextField
+                autoFocus
+                margin="dense"
+                id="email"
+                label="Email"
+                type="email"
+                fullWidth
+                variant="standard"
+                value={email}
+                onChange={(e) => setName(e.target.value)}
+              />
               <TextField
                 autoFocus
                 margin="dense"
@@ -157,9 +169,7 @@ function ContactsPage() {
             </DialogActions>
           </Dialog>
         </Grid>
-        <Grid>
-          <Button variant="contained">View Contact</Button>
-        </Grid>
+        <ViewContactForm />
         <Grid>
           <Button variant="contained">Update Contact</Button>
         </Grid>
