@@ -16,7 +16,6 @@ import {
 const ViewContactForm = () => {
   const [openViewContactForm, setOpenViewContactForm] = useState(false);
   const [id, setId] = useState("");
-  const [obtainedContact, setObtainedContact] = useState("");
   const handleClickOpenViewContactForm = () => {
     setOpenViewContactForm(true);
   };

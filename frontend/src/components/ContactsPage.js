@@ -16,11 +16,11 @@ function ContactsPage() {
 
   const columns = [
     { field: "sn", headerName: "S/N", width: 75 },
-    { field: "id", headerName: "Contact ID", width: 250 },
+    { field: "id", headerName: "Contact ID", width: 210 },
     { field: "name", headerName: "Name", width: 250 },
     { field: "email", headerName: "Email", width: 250 },
     { field: "gender", headerName: "Gender", width: 75 },
-    { field: "telephone", headerName: "Telephone", width: 200 },
+    { field: "telephone", headerName: "Telephone", width: 150 },
     { field: "__v0", hide: true },
   ];
 
