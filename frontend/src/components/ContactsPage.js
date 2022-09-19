@@ -5,6 +5,7 @@ import UpdateContactForm from "./UpdateContactForm";
 import DeleteContactForm from "./DeleteContactForm";
 import { useState } from "react";
 import axios from "axios";
+import { FaAddressBook } from "react-icons/fa";
 import { URL_GET_ALL_USERS } from "../configs";
 
 import { DataGrid } from "@mui/x-data-grid";
@@ -47,6 +48,11 @@ function ContactsPage() {
       justify="center"
       m={10}
     >
+      <Grid item xs={12}>
+        <h1>
+          Contact Book System <FaAddressBook />
+        </h1>
+      </Grid>
       <Grid item xs={8}>
         <DataGrid
           component={Paper}
