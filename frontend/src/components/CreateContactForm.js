@@ -20,6 +20,16 @@ const CreateContactForm = () => {
   const [phone, setPhone] = useState("");
   const [openCreateContactForm, setOpenCreateContactForm] = useState(false);
 
+  const isEmailValid = (text) => {
+    let reg = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w\w+)+$/;
+    if (reg.test(test) === false) {
+      return false;
+    }
+
+    console.log("Email passed validation");
+    return true;
+  };
+
   const handleClickOpenCreateContactForm = () => {
     setOpenCreateContactForm(true);
   };
