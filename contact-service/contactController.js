@@ -46,13 +46,13 @@ exports.new = function (req, res) {
 // Handles view contact info
 exports.view = function (req, res) {
   try {
-    const { contact_id } = req.params;
+    const contact_id = req.params.contact_id;
 
-    if (!contact_id) {
-      return res.status(400).json({ message: "Missing contact ID" });
-    }
+    // if (contact_id === "") {
+    //   return res.status(400).json({ message: "Missing contact ID" });
+    // }
 
-    Contact.findById(req.params.contact_id, function (err, contact) {
+    Contact.findById(contact_id, function (err, contact) {
       if (!contact) {
         return res.status(500).json({ message: "Contact doesn't exist" });
       }

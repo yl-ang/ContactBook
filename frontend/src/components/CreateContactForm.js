@@ -2,6 +2,7 @@ import * as React from "react";
 import { URL_CREATE_USER } from "../configs";
 import { useState } from "react";
 import axios from "axios";
+import { STATUS_CODE_BAD_REQUEST } from "../constants";
 import {
   Button,
   Dialog,
@@ -44,7 +45,11 @@ const CreateContactForm = () => {
         phone,
       })
       .catch((err) => {
-        alert("Please try again later");
+        if (err.response.status === STATUS_CODE_BAD_REQUEST) {
+          alert("Missing name/email fields");
+        } else {
+          alert("Please try again later");
+        }
       });
 
     if (res && res.status === 200) {

@@ -2,6 +2,8 @@ import * as React from "react";
 import { URL_VIEW_USER } from "../configs";
 import { useState } from "react";
 import axios from "axios";
+import { STATUS_CODE_BAD_REQUEST } from "../constants";
+
 import {
   Button,
   Dialog,
@@ -22,14 +24,15 @@ const ViewContactForm = () => {
 
   const handleViewContact = async () => {
     setOpenViewContactForm(false);
-    const res = await axios
-      .get(URL_VIEW_USER + id, {
-        id,
-      })
-      .catch((err) => {
-        alert(err);
-        alert("Please try again later");
-      });
+
+    if (id === "") {
+      alert("Missing contact ID");
+      return;
+    }
+
+    const res = await axios.get(URL_VIEW_USER + id).catch((err) => {
+      alert("Please try again later");
+    });
 
     if (res && res.status === 200) {
       var profile =
