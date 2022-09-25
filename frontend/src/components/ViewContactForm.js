@@ -2,7 +2,7 @@ import * as React from "react";
 import { URL_VIEW_USER } from "../configs";
 import { useState } from "react";
 import axios from "axios";
-import { STATUS_CODE_BAD_REQUEST } from "../constants";
+import SearchIcon from "@mui/icons-material/Search";
 
 import {
   Button,
@@ -54,7 +54,11 @@ const ViewContactForm = () => {
 
   return (
     <Grid m={1}>
-      <Button variant="contained" onClick={handleClickOpenViewContactForm}>
+      <Button
+        variant="contained"
+        onClick={handleClickOpenViewContactForm}
+        endIcon={<SearchIcon />}
+      >
         View Contact
       </Button>
       <Dialog

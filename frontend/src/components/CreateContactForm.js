@@ -3,6 +3,7 @@ import { URL_CREATE_USER } from "../configs";
 import { useState } from "react";
 import axios from "axios";
 import { STATUS_CODE_BAD_REQUEST } from "../constants";
+import PersonAddAltIcon from "@mui/icons-material/PersonAddAlt";
 import {
   Button,
   Dialog,
@@ -59,7 +60,11 @@ const CreateContactForm = () => {
 
   return (
     <Grid m={1}>
-      <Button variant="contained" onClick={handleClickOpenCreateContactForm}>
+      <Button
+        variant="contained"
+        onClick={handleClickOpenCreateContactForm}
+        endIcon={<PersonAddAltIcon />}
+      >
         Create Contact
       </Button>
       <Dialog

@@ -2,6 +2,7 @@ import * as React from "react";
 import { URL_DELETE_USER } from "../configs";
 import { useState } from "react";
 import axios from "axios";
+import DeleteIcon from "@mui/icons-material/Delete";
 import {
   Button,
   Dialog,
@@ -38,7 +39,11 @@ const DeleteContactForm = () => {
 
   return (
     <Grid m={1}>
-      <Button variant="contained" onClick={handleClickOpenDeleteContactForm}>
+      <Button
+        variant="contained"
+        onClick={handleClickOpenDeleteContactForm}
+        endIcon={<DeleteIcon />}
+      >
         Delete Contact
       </Button>
       <Dialog

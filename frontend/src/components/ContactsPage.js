@@ -49,12 +49,12 @@ function ContactsPage() {
       justify="center"
       m={10}
     >
-      <GetCurrentSgTemperature />
-      <Grid item xs={12}>
+      <Grid item xs={8}>
         <h1>
           Contact Book System <FaAddressBook />
         </h1>
       </Grid>
+      <GetCurrentSgTemperature />
       <Grid item xs={8}>
         <DataGrid
           component={Paper}

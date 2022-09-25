@@ -2,6 +2,7 @@ import * as React from "react";
 import { URL_UPDATE_USER } from "../configs";
 import { useState } from "react";
 import axios from "axios";
+import EditIcon from "@mui/icons-material/Edit";
 import {
   Button,
   Dialog,
@@ -57,7 +58,11 @@ const UpdateContactForm = () => {
   };
   return (
     <Grid m={1}>
-      <Button variant="contained" onClick={handleClickOpenUpdateContactForm}>
+      <Button
+        variant="contained"
+        onClick={handleClickOpenUpdateContactForm}
+        endIcon={<EditIcon />}
+      >
         Update Contact
       </Button>
       <Dialog
