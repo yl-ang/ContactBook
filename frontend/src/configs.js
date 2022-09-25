@@ -1,5 +1,6 @@
 const URI_CONTACT_SVC =
-  process.env.REACT_APP_URI_USER_SVC || "http://localhost:8080";
+  "http://contact-service-dev.ap-southeast-1.elasticbeanstalk.com/" ||
+  "http://localhost:8080";
 
 const PREFIX_CONTACT_SVC = "/api/contacts";
 
