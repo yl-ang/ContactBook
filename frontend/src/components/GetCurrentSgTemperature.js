@@ -26,7 +26,7 @@ const GetCurrentSgTemperature = () => {
       }}
     >
       <Button
-        variant="outlined"
+        variant="contained"
         onClick={handleDeleteContact}
         endIcon={<ThermostatAutoIcon />}
       >

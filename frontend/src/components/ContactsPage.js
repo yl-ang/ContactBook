@@ -6,12 +6,12 @@ import DeleteContactForm from "./DeleteContactForm";
 import GetCurrentSgTemperature from "./GetCurrentSgTemperature";
 import { useState } from "react";
 import axios from "axios";
-import { FaAddressBook } from "react-icons/fa";
+import { Typography } from "@mui/material";
 import { URL_GET_ALL_USERS } from "../configs";
 
 import { DataGrid } from "@mui/x-data-grid";
 
-import { Paper, Grid, Button } from "@mui/material";
+import { Paper, Grid } from "@mui/material";
 
 function ContactsPage() {
   const [contacts, setcontacts] = useState([]);
@@ -50,15 +50,31 @@ function ContactsPage() {
       m={10}
     >
       <Grid item xs={8}>
-        <h1>
-          Contact Book System <FaAddressBook />
-        </h1>
+        <Typography
+          fontFamily="Montserrat"
+          variant="h1"
+          textAlign="center"
+          sx={{
+            border: 1,
+            borderRadius: 2,
+            backgroundColor: "rgba(238, 237, 231, 0.90)",
+          }}
+        >
+          Contact Book Service
+        </Typography>
       </Grid>
       <GetCurrentSgTemperature />
       <Grid item xs={8}>
         <DataGrid
           component={Paper}
-          style={{ height: 500, width: "100%", flexGrow: 1, display: "flex" }}
+          sx={{ border: 1, borderRadius: 2 }}
+          style={{
+            height: 500,
+            width: "100%",
+            flexGrow: 1,
+            display: "flex",
+            backgroundColor: "rgba(238, 237, 231, 0.90)",
+          }}
           rows={contacts.map((item, index) => ({
             sn: index + 1,
             id: item._id,
