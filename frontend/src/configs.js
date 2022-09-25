@@ -1,5 +1,5 @@
 const URI_CONTACT_SVC =
-  "http://contact-service-dev.ap-southeast-1.elasticbeanstalk.com/" ||
+  "http://contact-service-dev.ap-southeast-1.elasticbeanstalk.com" ||
   "http://localhost:8080";
 
 const PREFIX_CONTACT_SVC = "/api/contacts";
