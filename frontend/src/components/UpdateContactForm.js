@@ -62,6 +62,13 @@ const UpdateContactForm = () => {
         variant="contained"
         onClick={handleClickOpenUpdateContactForm}
         endIcon={<EditIcon />}
+        style={{
+          maxWidth: "200px",
+          maxHeight: "35px",
+          minWidth: "200px",
+          minHeight: "35px",
+        }}
+        
       >
         Update Contact
       </Button>

@@ -58,6 +58,12 @@ const ViewContactForm = () => {
         variant="contained"
         onClick={handleClickOpenViewContactForm}
         endIcon={<SearchIcon />}
+        style={{
+          maxWidth: "200px",
+          maxHeight: "35px",
+          minWidth: "200px",
+          minHeight: "35px",
+        }}
       >
         View Contact
       </Button>

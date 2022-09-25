@@ -64,6 +64,12 @@ const CreateContactForm = () => {
         variant="contained"
         onClick={handleClickOpenCreateContactForm}
         endIcon={<PersonAddAltIcon />}
+        style={{
+          maxWidth: "200px",
+          maxHeight: "35px",
+          minWidth: "200px",
+          minHeight: "35px",
+        }}
       >
         Create Contact
       </Button>

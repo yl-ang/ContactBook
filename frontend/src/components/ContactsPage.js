@@ -21,7 +21,7 @@ function ContactsPage() {
     { field: "id", headerName: "Contact ID", width: 210 },
     { field: "name", headerName: "Name", width: 250 },
     { field: "email", headerName: "Email", width: 250 },
-    { field: "gender", headerName: "Gender", width: 75 },
+    { field: "gender", headerName: "Gender", width: 90 },
     { field: "telephone", headerName: "Telephone", width: 150 },
     { field: "__v0", hide: true },
   ];

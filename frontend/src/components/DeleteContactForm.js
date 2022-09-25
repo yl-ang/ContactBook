@@ -43,6 +43,12 @@ const DeleteContactForm = () => {
         variant="contained"
         onClick={handleClickOpenDeleteContactForm}
         endIcon={<DeleteIcon />}
+        style={{
+          maxWidth: "200px",
+          maxHeight: "35px",
+          minWidth: "200px",
+          minHeight: "35px",
+        }}
       >
         Delete Contact
       </Button>
