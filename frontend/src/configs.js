@@ -1,5 +1,5 @@
 const URI_CONTACT_SVC =
-  "http://contact-service-dev.ap-southeast-1.elasticbeanstalk.com" ||
+  "https://clever-stone-363611.as.r.appspot.com/api/contacts" ||
   "http://localhost:8080";
 
 const PREFIX_CONTACT_SVC = "/api/contacts";
