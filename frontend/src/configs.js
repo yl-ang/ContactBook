@@ -10,6 +10,9 @@ const VIEW_USER = "/";
 const UPDATE_USER = "/";
 const DELETE_USER = "/";
 
+export const URI_AWS_LAMBDA_FUNCTION =
+  "https://3gr39r5i29.execute-api.us-east-1.amazonaws.com/default/getWeatherSingapore";
+
 export const URL_GET_ALL_USERS =
   URI_CONTACT_SVC + PREFIX_CONTACT_SVC + GET_ALL_USERS;
 export const URL_CREATE_USER =

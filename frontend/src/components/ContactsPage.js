@@ -3,6 +3,7 @@ import CreateContactForm from "./CreateContactForm";
 import ViewContactForm from "./ViewContactForm";
 import UpdateContactForm from "./UpdateContactForm";
 import DeleteContactForm from "./DeleteContactForm";
+import GetCurrentSgTemperature from "./GetCurrentSgTemperature";
 import { useState } from "react";
 import axios from "axios";
 import { FaAddressBook } from "react-icons/fa";
@@ -10,7 +11,7 @@ import { URL_GET_ALL_USERS } from "../configs";
 
 import { DataGrid } from "@mui/x-data-grid";
 
-import { Paper, Grid } from "@mui/material";
+import { Paper, Grid, Button } from "@mui/material";
 
 function ContactsPage() {
   const [contacts, setcontacts] = useState([]);
@@ -48,6 +49,7 @@ function ContactsPage() {
       justify="center"
       m={10}
     >
+      <GetCurrentSgTemperature />
       <Grid item xs={12}>
         <h1>
           Contact Book System <FaAddressBook />
