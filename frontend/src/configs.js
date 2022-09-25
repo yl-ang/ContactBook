@@ -1,6 +1,5 @@
 const URI_CONTACT_SVC =
-  "https://clever-stone-363611.as.r.appspot.com/api/contacts" ||
-  "http://localhost:8080";
+  "https://clever-stone-363611.as.r.appspot.com" || "http://localhost:8080";
 
 const PREFIX_CONTACT_SVC = "/api/contacts";
 
