@@ -1,8 +1,11 @@
 steps:
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
+    dir: "contact-service"
   - name: "gcr.io/cloud-builders/npm"
     args: ["test"]
+    dir: "contact-service"
   - name: "gcr.io/cloud-builders/gcloud"
     args: ["app", "deploy"]
+    dir: "contact-service"
 timeout: "1600s"
