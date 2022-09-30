@@ -15,6 +15,7 @@ import { Paper, Grid } from "@mui/material";
 
 function ContactsPage() {
   const [contacts, setcontacts] = useState([]);
+  const [firstAccess, setFirstAccess] = useState(true);
 
   const columns = [
     { field: "sn", headerName: "S/N", width: 75 },
@@ -37,8 +38,12 @@ function ContactsPage() {
   };
 
   React.useEffect(() => {
+    if (firstAccess) {
+      handleGetAllContacts();
+      setFirstAccess(false);
+    }
     setInterval(handleGetAllContacts, 15000);
-  });
+  }, [firstAccess, setFirstAccess]);
 
   return (
     <Grid
