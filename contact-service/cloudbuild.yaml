@@ -3,6 +3,6 @@ steps:
     args: ["install"]
     dir: "contact-service"
   - name: "gcr.io/cloud-builders/gcloud"
-    args: ["app", "deploy"]
+    args: ["app", "deploy", "[contact-service/app.yaml]"]
     dir: "contact-service"
 timeout: "1600s"
