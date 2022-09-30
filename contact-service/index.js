@@ -37,7 +37,7 @@ var port = process.env.PORT || 8080;
 
 app.get("/", (req, res) =>
   res.send(
-    "Website is up and running, visit /api/contacts to use contacts services"
+    "Website is up and running, visit /api/contacts to use contacts services :))"
   )
 );
 
