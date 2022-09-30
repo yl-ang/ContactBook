@@ -2,7 +2,7 @@ steps:
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
     dir: "contact-service"
-  - name: create-env
+  - name: node:10.15.1
     entrypoint: npm
     args: ["run", "create-env"]
     dir: "contact-service"
