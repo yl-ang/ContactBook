@@ -37,7 +37,7 @@ function ContactsPage() {
   };
 
   React.useEffect(() => {
-    handleGetAllContacts();
+    setInterval(handleGetAllContacts, 15000);
   });
 
   return (
