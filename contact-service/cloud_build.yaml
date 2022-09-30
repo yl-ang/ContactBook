@@ -2,6 +2,12 @@ steps:
   - name: "gcr.io/cloud-builders/npm"
     args: ["install"]
     dir: "contact-service"
+  - name: node:create-env
+  entrypoint: npm
+  args: ["run", "create-env"]
+  env:
+    - 'MONGODB_URI=${_MONGODB_URI}'
+  dir: "contact-service"
   - name: "gcr.io/cloud-builders/gcloud"
     args: ["app", "deploy", "app.yaml"]
     dir: "contact-service"
