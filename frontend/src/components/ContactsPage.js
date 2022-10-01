@@ -19,7 +19,7 @@ function ContactsPage() {
 
   const columns = [
     { field: "sn", headerName: "S/N", width: 75 },
-    { field: "id", headerName: "Contact ID", width: 210 },
+    { field: "id", headerName: "Contact ID", width: 230 },
     { field: "name", headerName: "Name", width: 250 },
     { field: "email", headerName: "Email", width: 250 },
     { field: "gender", headerName: "Gender", width: 90 },
@@ -42,7 +42,7 @@ function ContactsPage() {
       handleGetAllContacts();
       setFirstAccess(false);
     }
-    setInterval(handleGetAllContacts, 15000);
+    setInterval(handleGetAllContacts, 1000);
   }, [firstAccess, setFirstAccess]);
 
   return (
